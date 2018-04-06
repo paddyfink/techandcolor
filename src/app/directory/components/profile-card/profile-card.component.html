@@ -1,0 +1,39 @@
+<!-- <div class="card mb-4 box-shadow" style="width: 18rem;">
+  <img class="card-img-top" [src]="profile.picture" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{profile.fullname}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{profile.headline}}</h6>
+    <span *ngFor="let tag of profile.tags" class="badge badge-pill badge-secondary mr-2">{{tag}}</span>
+    <p class="card-text">{{profile.bio | truncate: 200 : '...': true}}</p>
+    <div class="d-flex justify-content-between align-items-center">
+      <a [href]="profile.linkedin" class="card-link" target="_blank">View profile</a>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="card mb-4" [ngClass]="{ 'border-secondary': profile.status=='approved','border-danger': !profile.status,'border-warning': profile.status=='published'}">
+  <div class="card-body row">
+    <div class="col-lg-2 picture-wrapper">
+      <img class="rounded-circle" [src]="profile.pictureThumbnail" alt="{{profile.fullname}}">
+    </div>
+    <div class="col-lg-10 ">
+      <h5 class="profile-title">{{profile.fullname}}
+        <span class="badge badge-primary mf-3">{{profile.category}}</span>
+      </h5>
+      <h6 class="mb-2 text-muted">{{profile.headline}}</h6>
+      <div class="mb-2 text-muted">
+        <i class="fa fa-map-marker mr-1" aria-hidden="true"></i>{{profile.city}}</div>
+      <div class="mb-2">
+        <span *ngFor="let tag of profile.tags" class="badge badge-pill badge-dark mr-2">{{tag}}</span>
+      </div>
+      <p class="card-text">{{profile.bio | truncate: 300 : '...': true}}</p>
+      <div class="d-flex justify-content-between align-items-center">
+        <a [href]="profile.linkedin" class="card-link" target="_blank">View profile</a>
+        <span class="d-flex"></span>
+        <a *ngIf="profile.status==='published'" class="btn btn-success" (click)="approve(profile.id)">Approve</a>
+        <!-- <a  class="btn btn-warning">Reject</a> -->
+      </div>
+    </div>
+  </div>
+</div>

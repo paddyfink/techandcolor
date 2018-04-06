@@ -1,0 +1,13 @@
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">Directory</h1>
+    <p class="lead text-muted">Find talented developers and tech people of color.</p>
+    <p>
+      <a routerLink="profile/edit" class="btn btn-secondary my-2">{{currentUser?'Update your profile':'Add your profile'}}</a>
+    </p>
+    <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
+  </div>
+</section>
+<div class="container">
+  <app-profiles-list></app-profiles-list>
+</div>

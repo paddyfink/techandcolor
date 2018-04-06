@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+
+  <a routerLink="/" class="navbar-brand">
+    <img src="/assets/images/logo/logo_notagline_white.png" alt="">
+    <!-- <strong>Tech And Color</strong> -->
+    <span class="badge badge-pill badge-warning">Beta</span>
+  </a>
+  <button class="navbar-toggler" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed" aria-controls="navbarsExampleDefault"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" [ngbCollapse]="isNavbarCollapsed">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a class="nav-link" routerLink="/">Home
+        </a>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" routerLink="/directory">Directory </a>
+      </li>
+    </ul>
+    <div class="nav-item dropdown" ngbDropdown *ngIf="user; else loginSection">
+      <img [src]="user.pictureThumbnail" class="rounded-circle avatar">
+      <button class="btn btn-link" id="dropdownBasic1" ngbDropdownToggle>{{user.firstname}}</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button class="dropdown-item" (click)="logout()">Logout</button>
+      </div>
+    </div>
+    <ng-template #loginSection>
+      <a class="" (click)="login()" style="color: white">Login </a>
+    </ng-template>
+
+  </div>
+</nav>
